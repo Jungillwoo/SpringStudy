@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+  <!-- DI(Dependence Injection) : 의존성 주입 -->
+  <!--
+      TestVo vo = new TestVO();
+      vo.setMsg("DI연습입니다."); vo가 t1이면 id="t1"이 되어야함
+   -->
+  <bean id="t1" class="com.example.demo.vo.TestVO">
+    <property name="msg">
+      <value>DI연습입니다.</value>
+    </property>
+  </bean>
+
+  <bean id="t2" class="com.example.demo.vo.Test2VO">
+<!--    <property name="value">-->
+<!--      <value>10</value>-->
+<!--    </property>-->
+<!--    <property name="str">-->
+<!--      <value>10입니다.</value>-->
+<!--    </property>-->
+    <property name="str" value="안녕하세요"/> <!-- setter 호출 : setStr() -->
+    <property name="value" value="216"/> <!-- setter 호출 : setValue() -->
+  </bean>
+
+  <bean id="t3" class="com.example.demo.vo.Test3VO"> <!-- 생성자 Injection으로 생성됨 -->
+    <constructor-arg value="이루치" index="0"/>
+    <constructor-arg value="true" index="2"/>
+    <constructor-arg value="27" index="1"/>
+  </bean>
+
+  <bean id="t4" class="com.example.demo.vo.Test4VO">
+    <property name="test" ref="t2"/>
+  </bean>
+</beans>
