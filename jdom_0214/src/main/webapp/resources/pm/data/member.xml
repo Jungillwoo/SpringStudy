@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<members>
+  <member>
+    <name>마루</name>
+    <email>maru@korea.com</email>
+    <phone>01012345678</phone>
+  </member>
+  <member>
+    <name>이루</name>
+    <email>2ru@korea.com</email>
+    <phone>01013131313</phone>
+  </member>
+  <member>
+    <name>손흥민</name>
+    <email>son@korea.com</email>
+    <phone>01013513513</phone>
+  </member>
+  <member>
+    <name>파머</name>
+    <email>parmer@korea.com</email>
+    <phone>01098765432</phone>
+  </member>
+</members>
