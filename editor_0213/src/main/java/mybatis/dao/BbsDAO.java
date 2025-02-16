@@ -82,12 +82,6 @@ public class BbsDAO {
 
     int cnt = ss.update("bbs.update", map);
 
-    if (cnt > 0) {
-      ss.commit();
-    } else {
-      ss.rollback();
-    }
-
     return cnt;
   }
 
@@ -103,12 +97,6 @@ public class BbsDAO {
 
     int cnt = ss.insert("bbs.addcomm", cvo);
 
-    if (cnt > 0) {
-      ss.commit();
-    } else {
-      ss.rollback();
-    }
-
     return cnt;
   }
 
@@ -120,12 +108,6 @@ public class BbsDAO {
     map.put("pwd", pwd);
 
     int cnt = ss.update("bbs.del", map);
-
-    if (cnt > 0) {
-      ss.commit();
-    } else {
-      ss.rollback();
-    }
 
     return cnt;
   }
