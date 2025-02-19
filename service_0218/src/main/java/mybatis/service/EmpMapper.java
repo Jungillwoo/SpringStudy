@@ -2,8 +2,6 @@ package mybatis.service;
 
 import mybatis.vo.EmpVO;
 
-import java.util.Map;
-
 public interface EmpMapper {
 
   EmpVO[] allEmp() throws Exception;
