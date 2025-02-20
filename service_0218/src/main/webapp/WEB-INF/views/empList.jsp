@@ -98,7 +98,7 @@
   </style>
 </head>
 <body>
-<div id="wrap">
+<div id="wrap" class="wrap">
   <header>사원 목록</header>
   <article>
     <form action="empSearch" method="post">
