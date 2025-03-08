@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- 서버가 닫힐 때 리소스들 불러서 닫히게 함-->
+    <bean id="ds" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <!-- value = "클래스의 이름" -->
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/my_db"/>
+        <property name="username" value="test_admin"/>
+        <property name="password" value="1111"/>
+        <property name="maxActive" value="20"/>
+        <property name="maxIdle" value="10"/>
+        <property name="minIdle" value="10"/>
+    </bean>
+
+    <!-- mybatis할 때 config에 넣었던 정보들을 여기에 넣고 있는 것 -->
+    <bean id="factory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="ds"/>
+        <!-- classpath : 기본적으로 인식되는 경로 (src/main/java, resources 가 기본적으로 classpath로 등록되어 있엄) -->
+        <property name="mapperLocations" value="classpath:mybatis/mapper/*.xml"/>
+    </bean>
+
+    <!-- org.mybatis.spring.SqlSessionTemplate : 우리가 그동안 사용한 SqlSession과 같은 것
+         팩토리가 필요한 얘, 생성할 때 필요함 property(setterInjection)이 아니라 constructor-arg를 해야함-->
+    <bean id="ss" class="org.mybatis.spring.SqlSessionTemplate">
+        <constructor-arg ref="factory"/>
+    </bean>
+    <!-- ss는 DAO에서 사용 -->
+
+    <!-- dao들이 저장된 위치를 한 번에 지정하여 빈들이 생성되도록 하자 -->
+    <context:component-scan base-package="mybatis.dao"/>
+</beans>
